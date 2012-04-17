@@ -2,6 +2,11 @@
 
 A Dwolla API wrapper in Ruby.
 
+## Thanks
+
+This gem was created based on my work on split(able) team when integrating with Dwolla. 
+Thanks for all your support guys!
+
 ## Installation
 
 gem install dwolla
