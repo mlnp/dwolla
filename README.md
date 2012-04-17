@@ -4,7 +4,7 @@ A Dwolla API wrapper in Ruby.
 
 ## Thanks
 
-This gem was created based on my work on split(able) (http://www.splitable.com) team when integrating with Dwolla. 
+This gem was created based on my work at split(able) (http://www.splitable.com) team when integrating with Dwolla. 
 Thanks for all your support guys!
 
 ## Installation
