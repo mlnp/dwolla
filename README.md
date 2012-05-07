@@ -84,7 +84,7 @@ gem install dwolla
   user.send_money_to(other_user_id, amount, pin)
 ```
 
-##### To an Email Address
+###### To an Email Address
 
 ```ruby
   user = Dwolla::User.me(ACCESS_TOKEN)
