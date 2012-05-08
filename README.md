@@ -80,8 +80,10 @@ gem install dwolla
   other_user_id = '812-111-1111'
   pin = '1234'
   amount = 200
+	type = 'dwolla'
+	description = "For that lovely dinner"
 
-  user.send_money_to(other_user_id, amount, pin)
+  user.send_money_to(other_user_id, amount, pin, type, description)
 ```
 
 ###### To an Email Address
@@ -92,8 +94,9 @@ gem install dwolla
   pin = '1234'
   amount = 200
 	type = 'email'
+	description = "Just to say thanks"
 
-  user.send_money_to(other_user_email, amount, pin, type)
+  user.send_money_to(other_user_email, amount, pin, type, description)
 ```
 
 ##### Requesting Money 
@@ -107,8 +110,10 @@ gem install dwolla
   other_user_id = '812-111-1111'
   pin = '1234'
   amount = 200
+	type = 'dwolla'
+	description = "Gotta make rent"
 
-  user.request_money_from(other_user_id, amount, pin)
+  user.request_money_from(other_user_id, amount, pin, type, description)
 ```
 
 ###### From an email address
@@ -119,6 +124,7 @@ gem install dwolla
   pin = '1234'
   amount = 200
 	type = 'email'
+	description = "Awesome pizza party"
 
-  user.request_money_from(other_user_email, amount, pin, type)
+  user.request_money_from(other_user_email, amount, pin, type, description)
 ```

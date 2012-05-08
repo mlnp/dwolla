@@ -11,6 +11,7 @@ describe Dwolla::Transaction do
                      :pin => '1234',
                      :destinationId => '2',
                      :destinationType => 'dwolla',
+                     :notes => "Sending a transaction",
                      :oauth_token => '1' }
 
         stub_post('/transactions/send').with(:body => MultiJson.dump(@payload)).to_return(
@@ -20,6 +21,7 @@ describe Dwolla::Transaction do
         transaction = Dwolla::Transaction.new(:origin => @origin,
                                               :destination => @destination,
                                               :destination_type => @destination_type,
+                                              :description => "Sending a transaction", 
                                               :type => :send,
                                               :amount => 200,
                                               :pin => '1234')
@@ -33,6 +35,7 @@ describe Dwolla::Transaction do
         transaction = Dwolla::Transaction.new(:origin => @origin,
                                               :destination => @destination,
                                               :destination_type => @destination_type,
+                                              :description => "Sending a transaction",
                                               :type => :send,
                                               :amount => 200,
                                               :pin => '1234')
@@ -51,6 +54,7 @@ describe Dwolla::Transaction do
                      :pin => '1234',
                      :destinationId => 'user@example.com',
                      :destinationType => 'email',
+                     :notes => "Sending a transaction",
                      :oauth_token => '1' }
         stub_post('/transactions/send').with(:body => MultiJson.dump(@payload)).to_return(
                        :body => fixture('send_transaction.json'))
@@ -59,6 +63,7 @@ describe Dwolla::Transaction do
         transaction = Dwolla::Transaction.new(:origin => @origin,
                                               :destination => @destination,
                                               :destination_type => @destination_type,
+                                              :description => "Sending a transaction",
                                               :type => :send,
                                               :amount => 200,
                                               :pin => '1234')
@@ -73,6 +78,7 @@ describe Dwolla::Transaction do
         transaction = Dwolla::Transaction.new(:origin => @origin,
                                               :destination => @destination,
                                               :destination_type => @destination_type,
+                                              :description => "Sending a transaction",
                                               :type => :send,
                                               :amount => 200,
                                               :pin => '1234')
@@ -94,6 +100,7 @@ describe Dwolla::Transaction do
                      :pin => '1234',
                      :sourceId => '2',
                      :sourceType => 'dwolla',
+                     :notes => "Sending a transaction",
                      :oauth_token => '1' }
 
         stub_post('/transactions/request').with(:body => MultiJson.dump(@payload)).to_return(
@@ -104,6 +111,7 @@ describe Dwolla::Transaction do
         transaction = Dwolla::Transaction.new(:origin => @origin,
                                               :source => @source,
                                               :source_type => @source_type,
+                                              :description => "Sending a transaction",
                                               :type => :request,
                                               :amount => 200,
                                               :pin => '1234')
@@ -117,6 +125,7 @@ describe Dwolla::Transaction do
         transaction = Dwolla::Transaction.new(:origin => @origin,
                                               :source => @source,
                                               :source_type => @source_type,
+                                              :description => "Sending a transaction",
                                               :type => :request,
                                               :amount => 200,
                                               :pin => '1234')
@@ -134,6 +143,7 @@ describe Dwolla::Transaction do
                      :pin => '1234',
                      :sourceId => 'user@example.com',
                      :sourceType => 'email',
+                     :notes => "Sending a transaction",
                      :oauth_token => '1' }
 
         stub_post('/transactions/request').with(:body => MultiJson.dump(@payload)).to_return(
@@ -144,6 +154,7 @@ describe Dwolla::Transaction do
         transaction = Dwolla::Transaction.new(:origin => @origin,
                                               :source => @source,
                                               :source_type => @source_type,
+                                              :description => "Sending a transaction",
                                               :type => :request,
                                               :amount => 200,
                                               :pin => '1234')
@@ -157,6 +168,7 @@ describe Dwolla::Transaction do
         transaction = Dwolla::Transaction.new(:origin => @origin,
                                               :source => @source,
                                               :source_type => @source_type,
+                                              :description => "Sending a transaction",
                                               :type => :request,
                                               :amount => 200,
                                               :pin => '1234')
