@@ -45,10 +45,11 @@ module Dwolla
       instances_from_contacts(contacts)
     end
 
-    def send_money_to(destination, amount, pin, type='dwolla')
+    def send_money_to(destination, amount, pin, type='dwolla', description='')
       transaction = Transaction.new(:origin => self,
                                     :destination => destination,
                                     :destination_type => type,
+                                    :description => description,
                                     :type => :send,
                                     :amount => amount,
                                     :pin => pin)
@@ -56,10 +57,11 @@ module Dwolla
       transaction.execute
     end
 
-    def request_money_from(source, amount, pin, source_type='dwolla')
+    def request_money_from(source, amount, pin, source_type='dwolla', description='')
       transaction = Transaction.new(:origin => self,
                                     :source => source,
                                     :source_type => source_type,
+                                    :description => description,
                                     :type => :request,
                                     :amount => amount,
                                     :pin => pin)

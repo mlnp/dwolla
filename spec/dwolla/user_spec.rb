@@ -46,6 +46,7 @@ describe Dwolla::User do
         destination_user = Dwolla::User.new(:id => '2')
         amount = 10
         pin = '2222'
+        description = "Sending a transaction"
 
 
         transaction = double('transaction')
@@ -54,19 +55,21 @@ describe Dwolla::User do
         Dwolla::Transaction.should_receive(:new).with(:origin => user,
                                               :destination => destination_user,
                                               :destination_type => 'dwolla',
+                                              :description => description,
                                               :amount => 10,
                                               :type => :send,
                                               :pin => '2222').and_return(transaction)
 
         transaction.should_receive(:execute).and_return(transaction_id)
 
-        user.send_money_to(destination_user, amount, pin).should == 123
+        user.send_money_to(destination_user, amount, pin, 'dwolla', description).should == 123
       end
     end
     context "to an email address" do
       it "should make the correct transaction" do
         user = Dwolla::User.new(:oauth_token => '12345', :id => '1')
         destination_user = 'user@example.com'
+        description = "Sending a transaction"
         amount = 10
         pin = '2222'
 
@@ -77,13 +80,14 @@ describe Dwolla::User do
         Dwolla::Transaction.should_receive(:new).with(:origin => user,
                                               :destination => destination_user,
                                               :destination_type => 'email',
+                                              :description => description,
                                               :amount => 10,
                                               :type => :send,
                                               :pin => '2222').and_return(transaction)
 
         transaction.should_receive(:execute).and_return(transaction_id)
 
-        user.send_money_to(destination_user, amount, pin, 'email').should == 123
+        user.send_money_to(destination_user, amount, pin, 'email', description).should == 123
       end
     end
   end
@@ -95,6 +99,7 @@ describe Dwolla::User do
         source_user_id = '2'
         amount = 10
         pin = '2222'
+        description = "Sending a transaction"
 
         transaction = double('transaction')
         transaction_id = 123
@@ -102,13 +107,14 @@ describe Dwolla::User do
         Dwolla::Transaction.should_receive(:new).with(:origin => user,
                                                       :source => source_user_id,
                                                       :source_type => 'dwolla',
+                                                      :description => description,
                                                       :amount => 10,
                                                       :type => :request,
                                                       :pin => '2222').and_return(transaction)
 
         transaction.should_receive(:execute).and_return(transaction_id)
 
-        user.request_money_from(source_user_id, amount, pin).should == 123
+        user.request_money_from(source_user_id, amount, pin, 'dwolla', description).should == 123
       end
     end
     context "from an email address" do
@@ -117,20 +123,22 @@ describe Dwolla::User do
         source_user_id = 'user@example.com'
         amount = 10
         pin = '2222'
-
+        description = "Sending a transaction"
+         
         transaction = double('transaction')
         transaction_id = 123
 
         Dwolla::Transaction.should_receive(:new).with(:origin => user,
                                                       :source => source_user_id,
                                                       :source_type => 'email',
+                                                      :description => description,
                                                       :amount => 10,
                                                       :type => :request,
                                                       :pin => '2222').and_return(transaction)
 
         transaction.should_receive(:execute).and_return(transaction_id)
 
-        user.request_money_from(source_user_id, amount, pin, 'email').should == 123
+        user.request_money_from(source_user_id, amount, pin, 'email', description).should == 123
       end    
     end
   end
