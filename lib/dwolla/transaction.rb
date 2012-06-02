@@ -5,7 +5,7 @@ module Dwolla
     ENDPOINTS = { :send => 'transactions/send',
                   :request => 'transactions/request' }
 
-    attr_accessor :origin, :destination, :type, :amount, :pin, :id, :source
+    attr_accessor :origin, :destination, :destination_type, :type, :amount, :pin, :id, :source, :source_type
 
     def initialize(attrs = {})
       attrs.each do |key, value|
@@ -29,7 +29,9 @@ module Dwolla
           :pin => pin
         }
         payload[:destinationId] = destination if destination
+        payload[:destinationType] = destination_type if destination_type
         payload[:sourceId] = source if source
+        payload[:sourceType] = source_type if source_type
 
         payload
       end

@@ -22,7 +22,7 @@ gem install dwolla
 * Transactions Listing
 * Transactions Details by ID
 * Transactions Stats
-* Send and Request Transactions with Other Id types (Facebook, Twitter, Email, or Phone.)
+* Send and Request Transactions with Other Id types (Facebook, Twitter, or Phone.)
 
 ## Usage
 
@@ -78,6 +78,8 @@ gem install dwolla
 
 ( Auth Scope Required: send )
 
+###### To a Dwolla Account
+
 ```ruby
   user = Dwolla::User.me(ACCESS_TOKEN)
   other_user_id = '812-111-1111'
@@ -87,9 +89,23 @@ gem install dwolla
   user.send_money_to(other_user_id, amount, pin)
 ```
 
+###### To an Email Address
+
+```ruby
+  user = Dwolla::User.me(ACCESS_TOKEN)
+  other_user_email = 'user@example.com'
+  pin = '1234'
+  amount = 200
+	type = 'email'
+
+  user.send_money_to(other_user_email, amount, pin, type)
+```
+
 ##### Requesting Money 
 
 ( Auth Scope Required: request )
+
+###### From a Dwolla Account
 
 ```ruby
   user = Dwolla::User.me(ACCESS_TOKEN)
@@ -98,4 +114,16 @@ gem install dwolla
   amount = 200
 
   user.request_money_from(other_user_id, amount, pin)
+```
+
+###### From an email address
+
+```ruby
+  user = Dwolla::User.me(ACCESS_TOKEN)
+  other_user_email = 'user@example.com'
+  pin = '1234'
+  amount = 200
+	type = 'email'
+
+  user.request_money_from(other_user_email, amount, pin, type)
 ```
